@@ -1,4 +1,4 @@
-<?xml version="1.0"?>
+﻿<?xml version="1.0"?>
 <DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
   DTS:refId="Package"
   DTS:CreationDate="3/3/2020 10:32:33 AM"
@@ -11,9 +11,1013 @@
   DTS:LocaleID="1030"
   DTS:ObjectName="Package"
   DTS:PackageType="5"
-  DTS:VersionGUID="{C515171C-4D50-4AA6-975B-00F90099317A}">
+  DTS:VersionBuild="4"
+  DTS:VersionGUID="{147E86C6-A702-40D8-A3B6-454A699A4830}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
-  <DTS:Variables />
-  <DTS:Executables />
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[(local).FEPOS]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{211DB515-B1C2-4E1B-94C8-2FC5C11E404F}"
+      DTS:ObjectName="(local).FEPOS">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Data Source=(local);Initial Catalog=FEPOS;Provider=SQLNCLI11.1;Integrated Security=SSPI;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[Flat File Connection Manager]"
+      DTS:CreationName="FLATFILE"
+      DTS:DTSID="{664FA04B-C4C8-47E4-9EDC-D8BBFA11412F}"
+      DTS:ObjectName="Flat File Connection Manager">
+      <DTS:PropertyExpression
+        DTS:Name="ConnectionString">"S:\\Biobank-IT\\SSIS\\FEPOS\\Corrected files\\" +  @[User::filename] + ".csv"</DTS:PropertyExpression>
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:Format="Delimited"
+          DTS:LocaleID="1030"
+          DTS:HeaderRowDelimiter="_x000D__x000A_"
+          DTS:ColumnNamesInFirstDataRow="True"
+          DTS:RowDelimiter=""
+          DTS:TextQualifier="_x003C_none_x003E_"
+          DTS:CodePage="1252"
+          DTS:ConnectionString="S:\Biobank-IT\SSIS\FEPOS\Corrected files\filename.csv">
+          <DTS:FlatFileColumns>
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x003B_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="BSIG-nr"
+              DTS:DTSID="{B6B16E3E-2EE8-4C6D-8039-BECB2D76C613}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x003B_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="BoxID"
+              DTS:DTSID="{82DC2398-D81A-4E7F-A444-8EE6CC8C9107}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x003B_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="BoxFormat"
+              DTS:DTSID="{FA1575AB-0AE4-4A09-A36A-179FD1BBCA23}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x003B_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="BoxPosition"
+              DTS:DTSID="{7E427A40-0397-4A37-9442-72083DBDDBA9}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x003B_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="AliquotID"
+              DTS:DTSID="{DD1B7275-3C0F-442E-B740-911399A1CF3A}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x003B_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Sample Type"
+              DTS:DTSID="{C6338302-A3E8-4E5E-8ECD-FFFD66D814C3}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x003B_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Tube Format"
+              DTS:DTSID="{59991586-69AE-4641-8772-1ECC4987E320}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x003B_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Storage temp"
+              DTS:DTSID="{8BA740D2-0E9C-4524-A849-E877473BCB40}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x003B_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Volume"
+              DTS:DTSID="{84B9189E-9EFF-4CCE-BCBA-87F187D6D1A3}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x000D__x000A_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Clinical data"
+              DTS:DTSID="{815D99A4-CBED-48AE-A7CB-BE609C23A44C}"
+              DTS:CreationName="" />
+          </DTS:FlatFileColumns>
+        </DTS:ConnectionManager>
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:Variables>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{7F1D6656-12D9-413A-80A1-EC36D29FC657}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="filename">
+      <DTS:VariableValue
+        DTS:DataType="8">filename</DTS:VariableValue>
+    </DTS:Variable>
+  </DTS:Variables>
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\Loop trough all files"
+      DTS:CreationName="STOCK:FOREACHLOOP"
+      DTS:Description="Foreach Loop Container"
+      DTS:DTSID="{83096AF6-FD63-439A-B124-86A0645C31C1}"
+      DTS:ExecutableType="STOCK:FOREACHLOOP"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Loop trough all files">
+      <DTS:ForEachEnumerator
+        DTS:CreationName="Microsoft.ForEachFileEnumerator"
+        DTS:DTSID="{B0429FC9-9C5E-4F2F-B9B3-46536B49F506}"
+        DTS:ObjectName="{B0429FC9-9C5E-4F2F-B9B3-46536B49F506}">
+        <DTS:ObjectData>
+          <ForEachFileEnumeratorProperties>
+            <FEFEProperty
+              Folder="S:\Biobank-IT\SSIS\FEPOS\Corrected files" />
+            <FEFEProperty
+              FileSpec="*.csv" />
+            <FEFEProperty
+              FileNameRetrievalType="2" />
+            <FEFEProperty
+              Recurse="0" />
+          </ForEachFileEnumeratorProperties>
+        </DTS:ObjectData>
+      </DTS:ForEachEnumerator>
+      <DTS:Variables />
+      <DTS:Executables>
+        <DTS:Executable
+          DTS:refId="Package\Loop trough all files\Move files to DB"
+          DTS:CreationName="Microsoft.Pipeline"
+          DTS:Description="Data Flow Task"
+          DTS:DTSID="{83FD3531-45A1-4251-9356-B1451E769F5B}"
+          DTS:ExecutableType="Microsoft.Pipeline"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Move files to DB">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <pipeline
+              version="1">
+              <components>
+                <component
+                  refId="Package\Loop trough all files\Move files to DB\Derived Column"
+                  componentClassID="Microsoft.DerivedColumn"
+                  contactInfo="Derived Column;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+                  description="Creates new column values by applying expressions to transformation input columns. Create new columns or overwrite existing ones. For example, concatenate the values from the 'first name' and 'last name' column to make a 'full name' column."
+                  name="Derived Column"
+                  usesDispositions="true">
+                  <inputs>
+                    <input
+                      refId="Package\Loop trough all files\Move files to DB\Derived Column.Inputs[Derived Column Input]"
+                      description="Input to the Derived Column Transformation"
+                      name="Derived Column Input">
+                      <externalMetadataColumns />
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\Loop trough all files\Move files to DB\Derived Column.Outputs[Derived Column Output]"
+                      description="Default Output of the Derived Column Transformation"
+                      exclusionGroup="1"
+                      name="Derived Column Output"
+                      synchronousInputId="Package\Loop trough all files\Move files to DB\Derived Column.Inputs[Derived Column Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Loop trough all files\Move files to DB\Derived Column.Outputs[Derived Column Output].Columns[Filename]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Computation"
+                          errorRowDisposition="FailComponent"
+                          length="250"
+                          lineageId="Package\Loop trough all files\Move files to DB\Derived Column.Outputs[Derived Column Output].Columns[Filename]"
+                          name="Filename"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.String"
+                              description="Derived Column Expression"
+                              name="Expression">@[User::filename]</property>
+                            <property
+                              containsID="true"
+                              dataType="System.String"
+                              description="Derived Column Friendly Expression"
+                              expressionType="Notify"
+                              name="FriendlyExpression">@[User::filename]</property>
+                          </properties>
+                        </outputColumn>
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                    <output
+                      refId="Package\Loop trough all files\Move files to DB\Derived Column.Outputs[Derived Column Error Output]"
+                      description="Error Output of the Derived Column Transformation"
+                      exclusionGroup="1"
+                      isErrorOut="true"
+                      name="Derived Column Error Output"
+                      synchronousInputId="Package\Loop trough all files\Move files to DB\Derived Column.Inputs[Derived Column Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Loop trough all files\Move files to DB\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\Loop trough all files\Move files to DB\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\Loop trough all files\Move files to DB\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\Loop trough all files\Move files to DB\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\Loop trough all files\Move files to DB\Flat File Source"
+                  componentClassID="Microsoft.FlatFileSource"
+                  contactInfo="Flat File Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+                  description="Flat File Source"
+                  localeId="1030"
+                  name="Flat File Source"
+                  usesDispositions="true"
+                  version="1">
+                  <properties>
+                    <property
+                      dataType="System.Boolean"
+                      description="Specifies whether zero-length columns are treated as null."
+                      name="RetainNulls">false</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the name of an output column containing the file name. If no name is specified, no output column containing the file name will be generated."
+                      name="FileNameColumnName"></property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\Loop trough all files\Move files to DB\Flat File Source.Connections[FlatFileConnection]"
+                      connectionManagerID="Package.ConnectionManagers[Flat File Connection Manager]"
+                      connectionManagerRefId="Package.ConnectionManagers[Flat File Connection Manager]"
+                      name="FlatFileConnection" />
+                  </connections>
+                  <outputs>
+                    <output
+                      refId="Package\Loop trough all files\Move files to DB\Flat File Source.Outputs[Flat File Source Output]"
+                      name="Flat File Source Output">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Loop trough all files\Move files to DB\Flat File Source.Outputs[Flat File Source Output].Columns[BSIG-nr]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Loop trough all files\Move files to DB\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[BSIG-nr]"
+                          length="50"
+                          lineageId="Package\Loop trough all files\Move files to DB\Flat File Source.Outputs[Flat File Source Output].Columns[BSIG-nr]"
+                          name="BSIG-nr"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                              name="FastParse">false</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the data is in binary format."
+                              name="UseBinaryFormat">false</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\Loop trough all files\Move files to DB\Flat File Source.Outputs[Flat File Source Output].Columns[BoxID]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Loop trough all files\Move files to DB\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[BoxID]"
+                          length="50"
+                          lineageId="Package\Loop trough all files\Move files to DB\Flat File Source.Outputs[Flat File Source Output].Columns[BoxID]"
+                          name="BoxID"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                              name="FastParse">false</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the data is in binary format."
+                              name="UseBinaryFormat">false</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\Loop trough all files\Move files to DB\Flat File Source.Outputs[Flat File Source Output].Columns[BoxFormat]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Loop trough all files\Move files to DB\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[BoxFormat]"
+                          length="50"
+                          lineageId="Package\Loop trough all files\Move files to DB\Flat File Source.Outputs[Flat File Source Output].Columns[BoxFormat]"
+                          name="BoxFormat"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                              name="FastParse">false</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the data is in binary format."
+                              name="UseBinaryFormat">false</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\Loop trough all files\Move files to DB\Flat File Source.Outputs[Flat File Source Output].Columns[BoxPosition]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Loop trough all files\Move files to DB\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[BoxPosition]"
+                          length="50"
+                          lineageId="Package\Loop trough all files\Move files to DB\Flat File Source.Outputs[Flat File Source Output].Columns[BoxPosition]"
+                          name="BoxPosition"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                              name="FastParse">false</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the data is in binary format."
+                              name="UseBinaryFormat">false</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\Loop trough all files\Move files to DB\Flat File Source.Outputs[Flat File Source Output].Columns[AliquotID]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Loop trough all files\Move files to DB\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[AliquotID]"
+                          length="50"
+                          lineageId="Package\Loop trough all files\Move files to DB\Flat File Source.Outputs[Flat File Source Output].Columns[AliquotID]"
+                          name="AliquotID"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                              name="FastParse">false</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the data is in binary format."
+                              name="UseBinaryFormat">false</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\Loop trough all files\Move files to DB\Flat File Source.Outputs[Flat File Source Output].Columns[Sample Type]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Loop trough all files\Move files to DB\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[Sample Type]"
+                          length="50"
+                          lineageId="Package\Loop trough all files\Move files to DB\Flat File Source.Outputs[Flat File Source Output].Columns[Sample Type]"
+                          name="Sample Type"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                              name="FastParse">false</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the data is in binary format."
+                              name="UseBinaryFormat">false</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\Loop trough all files\Move files to DB\Flat File Source.Outputs[Flat File Source Output].Columns[Tube Format]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Loop trough all files\Move files to DB\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[Tube Format]"
+                          length="50"
+                          lineageId="Package\Loop trough all files\Move files to DB\Flat File Source.Outputs[Flat File Source Output].Columns[Tube Format]"
+                          name="Tube Format"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                              name="FastParse">false</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the data is in binary format."
+                              name="UseBinaryFormat">false</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\Loop trough all files\Move files to DB\Flat File Source.Outputs[Flat File Source Output].Columns[Storage temp]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Loop trough all files\Move files to DB\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[Storage temp]"
+                          length="50"
+                          lineageId="Package\Loop trough all files\Move files to DB\Flat File Source.Outputs[Flat File Source Output].Columns[Storage temp]"
+                          name="Storage temp"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                              name="FastParse">false</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the data is in binary format."
+                              name="UseBinaryFormat">false</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\Loop trough all files\Move files to DB\Flat File Source.Outputs[Flat File Source Output].Columns[Volume]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Loop trough all files\Move files to DB\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[Volume]"
+                          length="50"
+                          lineageId="Package\Loop trough all files\Move files to DB\Flat File Source.Outputs[Flat File Source Output].Columns[Volume]"
+                          name="Volume"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                              name="FastParse">false</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the data is in binary format."
+                              name="UseBinaryFormat">false</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\Loop trough all files\Move files to DB\Flat File Source.Outputs[Flat File Source Output].Columns[Clinical data]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Loop trough all files\Move files to DB\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[Clinical data]"
+                          length="50"
+                          lineageId="Package\Loop trough all files\Move files to DB\Flat File Source.Outputs[Flat File Source Output].Columns[Clinical data]"
+                          name="Clinical data"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                              name="FastParse">false</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the data is in binary format."
+                              name="UseBinaryFormat">false</property>
+                          </properties>
+                        </outputColumn>
+                      </outputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\Loop trough all files\Move files to DB\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[BSIG-nr]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="BSIG-nr" />
+                        <externalMetadataColumn
+                          refId="Package\Loop trough all files\Move files to DB\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[BoxID]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="BoxID" />
+                        <externalMetadataColumn
+                          refId="Package\Loop trough all files\Move files to DB\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[BoxFormat]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="BoxFormat" />
+                        <externalMetadataColumn
+                          refId="Package\Loop trough all files\Move files to DB\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[BoxPosition]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="BoxPosition" />
+                        <externalMetadataColumn
+                          refId="Package\Loop trough all files\Move files to DB\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[AliquotID]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="AliquotID" />
+                        <externalMetadataColumn
+                          refId="Package\Loop trough all files\Move files to DB\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[Sample Type]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="Sample Type" />
+                        <externalMetadataColumn
+                          refId="Package\Loop trough all files\Move files to DB\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[Tube Format]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="Tube Format" />
+                        <externalMetadataColumn
+                          refId="Package\Loop trough all files\Move files to DB\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[Storage temp]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="Storage temp" />
+                        <externalMetadataColumn
+                          refId="Package\Loop trough all files\Move files to DB\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[Volume]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="Volume" />
+                        <externalMetadataColumn
+                          refId="Package\Loop trough all files\Move files to DB\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[Clinical data]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="Clinical data" />
+                      </externalMetadataColumns>
+                    </output>
+                    <output
+                      refId="Package\Loop trough all files\Move files to DB\Flat File Source.Outputs[Flat File Source Error Output]"
+                      isErrorOut="true"
+                      name="Flat File Source Error Output">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Loop trough all files\Move files to DB\Flat File Source.Outputs[Flat File Source Error Output].Columns[Flat File Source Error Output Column]"
+                          codePage="1252"
+                          dataType="text"
+                          description="Flat File Source Error Output Column"
+                          lineageId="Package\Loop trough all files\Move files to DB\Flat File Source.Outputs[Flat File Source Error Output].Columns[Flat File Source Error Output Column]"
+                          name="Flat File Source Error Output Column" />
+                        <outputColumn
+                          refId="Package\Loop trough all files\Move files to DB\Flat File Source.Outputs[Flat File Source Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\Loop trough all files\Move files to DB\Flat File Source.Outputs[Flat File Source Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\Loop trough all files\Move files to DB\Flat File Source.Outputs[Flat File Source Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\Loop trough all files\Move files to DB\Flat File Source.Outputs[Flat File Source Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\Loop trough all files\Move files to DB\OLE DB Destination"
+                  componentClassID="Microsoft.OLEDBDestination"
+                  contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+                  description="OLE DB Destination"
+                  name="OLE DB Destination"
+                  usesDispositions="true"
+                  version="4">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                      name="CommandTimeout">0</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the name of the database object used to open a rowset."
+                      name="OpenRowset">[FEPOS_ULTIMO]</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the variable that contains the name of the database object used to open a rowset."
+                      name="OpenRowsetVariable"></property>
+                    <property
+                      dataType="System.String"
+                      description="The SQL command to be executed."
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the column code page to use when code page information is unavailable from the data source."
+                      name="DefaultCodePage">1252</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Forces the use of the DefaultCodePage property value when describing character data."
+                      name="AlwaysUseDefaultCodePage">false</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the mode used to access the database."
+                      name="AccessMode"
+                      typeConverter="AccessMode">0</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                      name="FastLoadKeepIdentity">false</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                      name="FastLoadKeepNulls">false</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                      name="FastLoadOptions"></property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                      name="FastLoadMaxInsertCommitSize">2147483647</property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\Loop trough all files\Move files to DB\OLE DB Destination.Connections[OleDbConnection]"
+                      connectionManagerID="Package.ConnectionManagers[(local).FEPOS]"
+                      connectionManagerRefId="Package.ConnectionManagers[(local).FEPOS]"
+                      description="The OLE DB runtime connection used to access the database."
+                      name="OleDbConnection" />
+                  </connections>
+                  <inputs>
+                    <input
+                      refId="Package\Loop trough all files\Move files to DB\OLE DB Destination.Inputs[OLE DB Destination Input]"
+                      errorOrTruncationOperation="Insert"
+                      errorRowDisposition="FailComponent"
+                      hasSideEffects="true"
+                      name="OLE DB Destination Input">
+                      <inputColumns>
+                        <inputColumn
+                          refId="Package\Loop trough all files\Move files to DB\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[BSIG-nr]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="50"
+                          cachedName="BSIG-nr"
+                          externalMetadataColumnId="Package\Loop trough all files\Move files to DB\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[BSIG-nr]"
+                          lineageId="Package\Loop trough all files\Move files to DB\Flat File Source.Outputs[Flat File Source Output].Columns[BSIG-nr]" />
+                        <inputColumn
+                          refId="Package\Loop trough all files\Move files to DB\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[BoxID]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="50"
+                          cachedName="BoxID"
+                          externalMetadataColumnId="Package\Loop trough all files\Move files to DB\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[BoxID]"
+                          lineageId="Package\Loop trough all files\Move files to DB\Flat File Source.Outputs[Flat File Source Output].Columns[BoxID]" />
+                        <inputColumn
+                          refId="Package\Loop trough all files\Move files to DB\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[BoxFormat]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="50"
+                          cachedName="BoxFormat"
+                          externalMetadataColumnId="Package\Loop trough all files\Move files to DB\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[BoxFormat]"
+                          lineageId="Package\Loop trough all files\Move files to DB\Flat File Source.Outputs[Flat File Source Output].Columns[BoxFormat]" />
+                        <inputColumn
+                          refId="Package\Loop trough all files\Move files to DB\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[BoxPosition]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="50"
+                          cachedName="BoxPosition"
+                          externalMetadataColumnId="Package\Loop trough all files\Move files to DB\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[BoxPosition]"
+                          lineageId="Package\Loop trough all files\Move files to DB\Flat File Source.Outputs[Flat File Source Output].Columns[BoxPosition]" />
+                        <inputColumn
+                          refId="Package\Loop trough all files\Move files to DB\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[AliquotID]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="50"
+                          cachedName="AliquotID"
+                          externalMetadataColumnId="Package\Loop trough all files\Move files to DB\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[AliquotID]"
+                          lineageId="Package\Loop trough all files\Move files to DB\Flat File Source.Outputs[Flat File Source Output].Columns[AliquotID]" />
+                        <inputColumn
+                          refId="Package\Loop trough all files\Move files to DB\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Sample Type]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="50"
+                          cachedName="Sample Type"
+                          externalMetadataColumnId="Package\Loop trough all files\Move files to DB\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Sample Type]"
+                          lineageId="Package\Loop trough all files\Move files to DB\Flat File Source.Outputs[Flat File Source Output].Columns[Sample Type]" />
+                        <inputColumn
+                          refId="Package\Loop trough all files\Move files to DB\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Tube Format]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="50"
+                          cachedName="Tube Format"
+                          externalMetadataColumnId="Package\Loop trough all files\Move files to DB\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Tube Format]"
+                          lineageId="Package\Loop trough all files\Move files to DB\Flat File Source.Outputs[Flat File Source Output].Columns[Tube Format]" />
+                        <inputColumn
+                          refId="Package\Loop trough all files\Move files to DB\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Storage temp]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="50"
+                          cachedName="Storage temp"
+                          externalMetadataColumnId="Package\Loop trough all files\Move files to DB\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Storage temp]"
+                          lineageId="Package\Loop trough all files\Move files to DB\Flat File Source.Outputs[Flat File Source Output].Columns[Storage temp]" />
+                        <inputColumn
+                          refId="Package\Loop trough all files\Move files to DB\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Volume]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="50"
+                          cachedName="Volume"
+                          externalMetadataColumnId="Package\Loop trough all files\Move files to DB\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Volume]"
+                          lineageId="Package\Loop trough all files\Move files to DB\Flat File Source.Outputs[Flat File Source Output].Columns[Volume]" />
+                        <inputColumn
+                          refId="Package\Loop trough all files\Move files to DB\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Clinical data]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="50"
+                          cachedName="Clinical data"
+                          externalMetadataColumnId="Package\Loop trough all files\Move files to DB\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Clinical data]"
+                          lineageId="Package\Loop trough all files\Move files to DB\Flat File Source.Outputs[Flat File Source Output].Columns[Clinical data]" />
+                        <inputColumn
+                          refId="Package\Loop trough all files\Move files to DB\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Filename]"
+                          cachedDataType="wstr"
+                          cachedLength="250"
+                          cachedName="Filename"
+                          externalMetadataColumnId="Package\Loop trough all files\Move files to DB\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Filename]"
+                          lineageId="Package\Loop trough all files\Move files to DB\Derived Column.Outputs[Derived Column Output].Columns[Filename]" />
+                      </inputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\Loop trough all files\Move files to DB\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[BSIG-nr]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="BSIG-nr" />
+                        <externalMetadataColumn
+                          refId="Package\Loop trough all files\Move files to DB\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[BoxID]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="BoxID" />
+                        <externalMetadataColumn
+                          refId="Package\Loop trough all files\Move files to DB\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[BoxFormat]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="BoxFormat" />
+                        <externalMetadataColumn
+                          refId="Package\Loop trough all files\Move files to DB\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[BoxPosition]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="BoxPosition" />
+                        <externalMetadataColumn
+                          refId="Package\Loop trough all files\Move files to DB\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[AliquotID]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="AliquotID" />
+                        <externalMetadataColumn
+                          refId="Package\Loop trough all files\Move files to DB\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Sample Type]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="Sample Type" />
+                        <externalMetadataColumn
+                          refId="Package\Loop trough all files\Move files to DB\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Tube Format]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="Tube Format" />
+                        <externalMetadataColumn
+                          refId="Package\Loop trough all files\Move files to DB\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Storage temp]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="Storage temp" />
+                        <externalMetadataColumn
+                          refId="Package\Loop trough all files\Move files to DB\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Volume]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="Volume" />
+                        <externalMetadataColumn
+                          refId="Package\Loop trough all files\Move files to DB\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Clinical data]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="Clinical data" />
+                        <externalMetadataColumn
+                          refId="Package\Loop trough all files\Move files to DB\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Filename]"
+                          dataType="wstr"
+                          length="250"
+                          name="Filename" />
+                      </externalMetadataColumns>
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\Loop trough all files\Move files to DB\OLE DB Destination.Outputs[OLE DB Destination Error Output]"
+                      exclusionGroup="1"
+                      isErrorOut="true"
+                      name="OLE DB Destination Error Output"
+                      synchronousInputId="Package\Loop trough all files\Move files to DB\OLE DB Destination.Inputs[OLE DB Destination Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Loop trough all files\Move files to DB\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\Loop trough all files\Move files to DB\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\Loop trough all files\Move files to DB\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\Loop trough all files\Move files to DB\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+              </components>
+              <paths>
+                <path
+                  refId="Package\Loop trough all files\Move files to DB.Paths[Derived Column Output]"
+                  endId="Package\Loop trough all files\Move files to DB\OLE DB Destination.Inputs[OLE DB Destination Input]"
+                  name="Derived Column Output"
+                  startId="Package\Loop trough all files\Move files to DB\Derived Column.Outputs[Derived Column Output]" />
+                <path
+                  refId="Package\Loop trough all files\Move files to DB.Paths[Flat File Source Output]"
+                  endId="Package\Loop trough all files\Move files to DB\Derived Column.Inputs[Derived Column Input]"
+                  name="Flat File Source Output"
+                  startId="Package\Loop trough all files\Move files to DB\Flat File Source.Outputs[Flat File Source Output]" />
+              </paths>
+            </pipeline>
+          </DTS:ObjectData>
+        </DTS:Executable>
+      </DTS:Executables>
+      <DTS:ForEachVariableMappings>
+        <DTS:ForEachVariableMapping
+          DTS:CreationName=""
+          DTS:DTSID="{8E5268A8-ECB4-47EA-B398-A2ED11B51F1F}"
+          DTS:ObjectName="{8E5268A8-ECB4-47EA-B398-A2ED11B51F1F}"
+          DTS:ValueIndex="0"
+          DTS:VariableName="User::filename" />
+      </DTS:ForEachVariableMappings>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph">
+        <NodeLayout
+          Size="153.6,41.6"
+          Id="Package\Loop trough all files\Move files to DB"
+          TopLeft="23.899995390574,39.1533346116807" />
+        <ContainerLayout
+          HeaderHeight="43"
+          IsExpanded="True"
+          PanelSize="244,153.6"
+          Size="244,196.8"
+          Id="Package\Loop trough all files"
+          TopLeft="97.3333294656543,83.2000006612143" />
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\Loop trough all files\Move files to DB">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="151.2,41.6"
+          Id="Package\Loop trough all files\Move files to DB\Flat File Source"
+          TopLeft="172.66665980551,70.0266672231886" />
+        <NodeLayout
+          Size="171.2,41.6"
+          Id="Package\Loop trough all files\Move files to DB\OLE DB Destination"
+          TopLeft="169.999993244807,291.893335653093" />
+        <NodeLayout
+          Size="152.8,41.6"
+          Id="Package\Loop trough all files\Move files to DB\Derived Column"
+          TopLeft="381.333318180509,168.480001338959" />
+        <EdgeLayout
+          Id="Package\Loop trough all files\Move files to DB.Paths[Flat File Source Output]"
+          TopLeft="248.26665980551,111.626667223189">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="209.466658374999,56.8533341157702"
+              Start="0,0"
+              End="209.466658374999,49.3533341157702">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,24.4266670578851" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,24.4266670578851"
+                    Point2="0,28.4266670578851"
+                    Point3="4,28.4266670578851" />
+                  <mssgle:LineSegment
+                    End="205.466658374999,28.4266670578851" />
+                  <mssgle:CubicBezierSegment
+                    Point1="205.466658374999,28.4266670578851"
+                    Point2="209.466658374999,28.4266670578851"
+                    Point3="209.466658374999,32.4266670578851" />
+                  <mssgle:LineSegment
+                    End="209.466658374999,49.3533341157702" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Loop trough all files\Move files to DB.Paths[Derived Column Output]"
+          TopLeft="457.733318180509,210.080001338959">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-202.133324935701,81.8133343141344"
+              Start="0,0"
+              End="-202.133324935701,74.3133343141344">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,36.9066671570672" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,36.9066671570672"
+                    Point2="0,40.9066671570672"
+                    Point3="-4,40.9066671570672" />
+                  <mssgle:LineSegment
+                    End="-198.133324935701,40.9066671570672" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-198.133324935701,40.9066671570672"
+                    Point2="-202.133324935701,40.9066671570672"
+                    Point3="-202.133324935701,44.9066671570672" />
+                  <mssgle:LineSegment
+                    End="-202.133324935701,74.3133343141344" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Loop trough all files\Move files to DB\OLE DB Destination">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
 </DTS:Executable>
